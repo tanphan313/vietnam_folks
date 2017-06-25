@@ -1,0 +1,12 @@
+<tr>
+  <td><%= sentence.id %></td>
+  <td><%= sentence.content %></td>
+  <td><%= sentence.meaning %></td>
+  <td><%= sentence.description %></td>
+  <td>
+    <%= link_to "Edit", edit_admin_category_sentence_path(sentence.category, sentence), class: "btn btn-success" %>
+    <%= link_to "Delete", admin_category_sentence_path(sentence.category, sentence), method: :delete,
+      data: {confirm: "Bạn chắc chắn muốn xoá câu này này?"},
+      class: "btn btn-danger" %>
+  </td>
+</tr>

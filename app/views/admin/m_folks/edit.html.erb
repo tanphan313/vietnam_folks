@@ -1,0 +1,97 @@
+<h1>Chỉnh sửa thông tin dân tộc <p class="label label-info"><%= @m_folk.name %></p></h1>
+<h3>Chế độ ngôn ngữ: <p class="label label-success"><%= t("language_#{I18n.locale.to_s}") %></p></h3>
+<h4>Chuyển đổi ngôn ngữ:
+  <% Settings.language_views.reject{|l| l == I18n.locale.to_s}.each do |val| %>
+    <%= link_to params.permit!.merge(locale: val), data:{locale: val} do %>
+      <span class="label label-default change-language"><%= t("language_#{val}") %></span>
+    <% end %>
+  <% end %>
+</h4>
+<br>
+
+<%= nested_form_for [:admin, @m_folk], html: {multipart: true} do |f| %>
+  <%= hidden_field_tag :locale, I18n.locale %>
+  <%= f.fields_for :teaser, @m_folk.teaser do |teaser| %>
+    <%= teaser.fields_for :image, teaser.object.image do |image_builder| %>
+      <div class="form-group">
+        <%= image_builder.label :teaser, t("teaser"), class: "control-label" %>
+        <%= image_builder.file_field :picture, class: "form-control" %>
+      </div>
+      <div class="form-group image-review">
+        <%= image_tag @m_folk.teaser_picture_url if @m_folk.teaser_picture_url %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= f.fields_for :background, @m_folk.background do |background| %>
+    <%= background.fields_for :image, background.object.image do |image_builder| %>
+      <div class="form-group">
+        <%= image_builder.label :background, t("background"), class: "control-label" %>
+        <%= image_builder.file_field :picture, class: "form-control" %>
+      </div>
+      <div class="form-group image-review">
+        <%= image_tag @m_folk.background_picture_url if @m_folk.background_picture_url %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= f.fields_for :folk_translations, @folk_translation do |folk_translation| %>
+    <%= folk_translation.hidden_field :m_language_id %>
+    <div class="form-group">
+      <%= folk_translation.label :name, t("name"), class: "control-label" %>
+      <%= folk_translation.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= folk_translation.label :introduction, t("introduction"), class: "control-label" %>
+      <%= folk_translation.text_area :introduction, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= folk_translation.label :population, t("population"), class: "control-label" %>
+      <%= folk_translation.text_area :population, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= folk_translation.label :residence_area, t("residence_area"), class: "control-label" %>
+      <%= folk_translation.text_area :residence_area, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= folk_translation.label :community_organization, t("community_organization"), class: "control-label" %>
+      <%= folk_translation.text_area :community_organization, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= folk_translation.fields_for :feature_translations, folk_translation.object.feature_translations do |feature_translation| %>
+        <div class="well well-sm">
+          <h3><%= t("#{feature_translation.object.feature_type}") %></h3>
+          <div class="form-group">
+            <%= feature_translation.label :description, t("description"), class: "control-label" %>
+            <%= feature_translation.text_area :description, class: "form-control" %>
+          </div>
+          <h4>Danh sách ảnh</h4>
+          <%= feature_translation.fields_for :images do |image_builder| %>
+            <div class="well well-sm white-back">
+              <div class="form-group">
+                <%= image_builder.label :picture, t("picture"), class: "control-label" %>
+                <%= image_builder.file_field :picture, class: "form-control" %>
+              </div>
+              <%= image_builder.fields_for :image_description_translations,
+                image_builder.object.image_description_translations.find_or_initialize_by(m_language_id: @folk_translation.m_language_id) do |description_builder| %>
+                <div class="form-group">
+                  <%= description_builder.hidden_field :m_language_id %>
+                  <%= description_builder.label :description_content, t("description_content"), class: "control-label" %>
+                  <%= description_builder.text_field :description_content, class: "form-control" %>
+                </div>
+              <% end %>
+              <p>
+                <%= image_builder.link_to_remove "Xoá bỏ ảnh này", class: "label label-danger" %>
+              </p>
+              <div class="form-group image-review">
+                <%= image_tag image_builder.object.picture_url if image_builder.object.picture_url %>
+              </div>
+            </div>
+          <% end %>
+          <p><%= feature_translation.link_to_add "Thêm ảnh mới", :images %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.submit "Cập nhật thông tin", class: "btn btn-primary" %>
+  </div>
+<% end %>

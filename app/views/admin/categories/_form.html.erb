@@ -1,0 +1,13 @@
+<%= form_for [:admin, category] do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Tiêu đề", class: "control-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Mô tả", class: "control-label" %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Hoàn tất", class: "btn btn-primary" %>
+  </div>
+<% end %>

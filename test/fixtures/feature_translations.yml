@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  type: 1
+  folk_translation: one
+
+two:
+  description: MyString
+  type: 1
+  folk_translation: two

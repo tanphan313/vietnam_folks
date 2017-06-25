@@ -1,0 +1,18 @@
+vi:
+  teaser: Ảnh đại diện
+  background: Ảnh nền
+  name: Tên dân tộc
+  introduction: Giới thiệu khái quát
+  population: Dân số
+  residence_area: Khu vực phân bổ
+  community_organization: Tổ chức cộng đồng
+  traditional_customed: Trang phục truyền thống
+  traditional_music: Âm nhạc truyền thống
+  dwelling_house: Nhà truyền thống
+  religion: Tín ngưỡng, tôn giáo
+  traditional_food: Ẩm thực truyền thống
+  description: Mô tả
+  picture: Chọn ảnh
+  language_vi: Tiếng Việt
+  language_en: Tiếng Anh
+  description_content: Mô tả ảnh

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HVT Api</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag "logo.png" %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">HVT Api</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+              <li class="<%= request['controller'] == 'admin/m_folks' ? 'active' : '' %>"><%= link_to "Danh sách dân tộc Việt", admin_root_path %></li>
+              <!-- <li class="<%#= request['controller'] == 'admin/categories' ? 'active' : '' %>"><%#= link_to "Danh sách chủ đề học", admin_categories_path %></li> -->
+              <li><%= link_to "Đăng xuất", destroy_user_session_path, method: :delete %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container container-fluid wrapper">
+      <% flash.each do |notice_type, notice| %>
+        <div class="alert alert-<%= notice_type %>"><%= notice %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

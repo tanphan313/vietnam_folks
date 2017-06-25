@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  folk_category: one
+  m_language: one
+
+two:
+  name: MyString
+  folk_category: two
+  m_language: two
