@@ -1,0 +1,4 @@
+<h1>Sửa câu hỏi</h1>
+<h3>Category: <%= link_to "#{@question.category.title}", edit_admin_category_path(@question.category) %></h3>
+
+<%= render "form", question: @question %>
