@@ -3,7 +3,11 @@ class Api::V1::CategoriesController < Api::V1::ApiController
 
   def index
     categories = Category.all
-    api_response(build_list_categories(categories), 200)
+    if categories.present?
+      api_response(build_list_categories(categories), 200)
+    else
+      api_response({ errors: { message: 'not found record' } }, 404)
+    end
   end
 
   def show
