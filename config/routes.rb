@@ -11,12 +11,16 @@ Rails.application.routes.draw do
     resources :categories, except: :show do
       resources :words, except: [:show]
       resources :sentences, except: [:show]
+      resources :questions, except: [:show]
     end
   end
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :m_folks, only: [:index, :show]
+      resources :categories, only: [:index, :show] do
+        resources :lessons, only: :show
+      end
     end
   end
 end

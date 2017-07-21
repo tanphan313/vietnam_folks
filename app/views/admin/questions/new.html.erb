@@ -1,0 +1,3 @@
+<h1>Tạo câu hỏi mới</h1>
+<h3>Category: <%= link_to "#{@question.category.title}", edit_admin_category_path(@question.category) %></h3>
+<%= render "form", question: @question %>

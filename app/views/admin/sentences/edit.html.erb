@@ -1,3 +1,4 @@
 <h1>Sửa câu</h1>
+<h3>Category: <%= link_to "#{@sentence.category.title}", edit_admin_category_path(@sentence.category) %></h3>
 
 <%= render "form", sentence: @sentence %>

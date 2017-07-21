@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704152708) do
+ActiveRecord::Schema.define(version: 20170721032925) do
 
   create_table "backgrounds", force: :cascade do |t|
     t.integer  "m_folk_id"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20170704152708) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "category_backgrounds", force: :cascade do |t|
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_category_backgrounds_on_category_id"
   end
 
   create_table "feature_translations", force: :cascade do |t|
@@ -176,6 +183,13 @@ ActiveRecord::Schema.define(version: 20170704152708) do
     t.boolean  "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "word_backgrounds", force: :cascade do |t|
+    t.integer  "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_word_backgrounds_on_word_id"
   end
 
   create_table "words", force: :cascade do |t|
