@@ -5,6 +5,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
+    @category.build_background.build_image unless @category.background
   end
 
   def create
@@ -17,12 +18,30 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @category.build_background.build_image unless @category.background
+  end
 
+  def update
+    if @category.update_attributes category_params
+      flash[:success] = "Cập nhật chủ đề thành công"
+    else
+      flash[:danger] = "Cập nhật chủ đề thất bại"
+    end
+    redirect_to admin_categories_path
+  end
+
+  def destroy
+    if @category.destroy
+      flash[:success] = "Xoá thành công"
+    else
+      flash[:danger] = "Xoá thất bại"
+    end
+    redirect_to :back
   end
 
   private
   def category_params
-    params.require(:category).permit :title, :description
+    params.require(:category).permit :title, :description, background_attributes: CategoryBackground::PARAMS_ATTRIBUTES
   end
 end

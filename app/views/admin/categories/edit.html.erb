@@ -2,6 +2,8 @@
 
 <%= link_to "Danh sách từ khoá", admin_category_words_path(@category), class: "btn btn-success" %>
 <%= link_to "Danh sách câu mẫu", admin_category_sentences_path(@category), class: "btn btn-success" %>
+<%= link_to "Danh sách câu hỏi trắc nghiệm", admin_category_questions_path(@category), class: "btn btn-success" %>
+
 <br>
 <br>
 <%= render "form", category: @category %>

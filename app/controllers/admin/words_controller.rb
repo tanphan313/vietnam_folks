@@ -8,6 +8,7 @@ class Admin::WordsController < ApplicationController
 
   def new
     @word = category.words.build
+    @word.build_background.build_image unless @word.background
   end
 
   def create
@@ -22,6 +23,7 @@ class Admin::WordsController < ApplicationController
   end
 
   def edit
+    @word.build_background.build_image unless @word.background
   end
 
   def update
@@ -44,7 +46,7 @@ class Admin::WordsController < ApplicationController
 
   private
   def word_params
-    params.require(:word).permit :id, :content, :meaning
+    params.require(:word).permit :id, :content, :meaning, background_attributes: WordBackground::PARAMS_ATTRIBUTES
   end
 
   def category
