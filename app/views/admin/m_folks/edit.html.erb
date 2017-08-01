@@ -39,10 +39,10 @@
       <%= folk_translation.label :name, t("name"), class: "control-label" %>
       <%= folk_translation.text_field :name, class: "form-control" %>
     </div>
-    <div class="form-group">
-      <%= folk_translation.label :introduction, t("introduction"), class: "control-label" %>
-      <%= folk_translation.text_area :introduction, class: "form-control" %>
-    </div>
+    <!-- <div class="form-group">
+      <%#= folk_translation.label :introduction, t("introduction"), class: "control-label" %>
+      <%#= folk_translation.text_area :introduction, class: "form-control" %>
+    </div> -->
     <div class="form-group">
       <%= folk_translation.label :population, t("population"), class: "control-label" %>
       <%= folk_translation.text_area :population, class: "form-control" %>
@@ -51,10 +51,10 @@
       <%= folk_translation.label :residence_area, t("residence_area"), class: "control-label" %>
       <%= folk_translation.text_area :residence_area, class: "form-control" %>
     </div>
-    <div class="form-group">
-      <%= folk_translation.label :community_organization, t("community_organization"), class: "control-label" %>
-      <%= folk_translation.text_area :community_organization, class: "form-control" %>
-    </div>
+    <!-- <div class="form-group">
+      <%#= folk_translation.label :community_organization, t("community_organization"), class: "control-label" %>
+      <%#= folk_translation.text_area :community_organization, class: "form-control" %>
+    </div> -->
     <div class="form-group">
       <%= folk_translation.fields_for :feature_translations, folk_translation.object.feature_translations do |feature_translation| %>
         <div class="well well-sm">

@@ -6,7 +6,7 @@ class FeatureTranslation < ApplicationRecord
   has_many :image_feature_translations, dependent: :destroy
   has_many :images, through: :image_feature_translations
 
-  enum feature_type: [:traditional_customed, :traditional_music, :dwelling_house, :religion, :traditional_food]
+  enum feature_type: [:traditional_customed, :traditional_music, :dwelling_house, :religion, :traditional_food, :community_organization]
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
