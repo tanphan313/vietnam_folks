@@ -59,10 +59,10 @@ class Api::V1::MFolksController < Api::V1::ApiController
       background_url: folk_translation.folk.teaser_picture_url,
       folk_translation:{
         name: folk_translation.name,
-        introduction: folk_translation.introduction,
+        # introduction: folk_translation.introduction,
         population: folk_translation.population,
         residence_area: folk_translation.residence_area,
-        community_organization: folk_translation.community_organization,
+        # community_organization: folk_translation.community_organization,
         feature_translations: folk_translation.feature_translations.map do |feature_translation|
           {
             description: feature_translation.description,

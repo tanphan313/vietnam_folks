@@ -10,6 +10,12 @@ namespace :master_data do
         params = folk_params(row)
         if folk = M::Folk.find_by(id: params[:id])
           folk.update! params
+          M::Language.pluck(:id).each do |language_id|
+            folk_translation = FolkTranslation.find_or_create_by(m_language_id: language_id, m_folk_id: folk.id)
+            FeatureTranslation.feature_types.each do |feature, feature_type|
+              FeatureTranslation.find_or_create_by(feature_type: feature, folk_translation_id: folk_translation.id)
+            end
+          end
         else
           folk = M::Folk.create! folk_params(row)
           M::Language.pluck(:id).each do |language_id|
