@@ -2,6 +2,9 @@ class Admin::MFolksController < ApplicationController
   load_and_authorize_resource class: M::Folk
 
   def index
+    @folk_categories = FolkCategory.order(id: :asc)
+    folk_category = FolkCategory.find_by(id: params[:folk_category_id]) || FolkCategory.first
+    @m_folks = folk_category.folks.order(id: :asc)
   end
 
   def show

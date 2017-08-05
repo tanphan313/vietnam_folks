@@ -1,5 +1,15 @@
 <h1>Danh sách dân tộc Việt Nam</h1>
 
+<ul class="nav nav-tabs">
+  <% params[:folk_category_id] = 1 unless params[:folk_category_id] %>
+  <% @folk_categories.each do |folk_category| %>
+    <li role="presentation"
+      class="<%= params[:folk_category_id].to_i == folk_category.id ? 'active' : '' %>">
+      <%= link_to folk_category.name, admin_root_path(folk_category_id: folk_category.id) %>
+    </li>
+  <% end %>
+</ul>
+
 <table class="table table-hover">
   <thead>
     <tr>
