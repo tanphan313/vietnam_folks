@@ -1,7 +1,9 @@
-id,name
-1,Miền Núi Phía Bắc
-2,Đồng Bằng Bắc Bộ
-3,Tây Nguyên
-4,Miền Trung
-5,Miền Tây Nam Bộ
-6,Miền Nam
+id,name,folk_ids
+1,Nhóm Việt Mường,"1,4,23,42"
+2,Nhóm Tày Thái,"47,26,35,43,7,14,2,3"
+3,Nhóm Kadai,"46,37,40,51"
+4,Nhóm Môn-Khmer,"12,53,22,31,30,15,25,27,18,36,5,24,29,45,20,54,52,28,32,13,21"
+5,Nhóm H'Mông - Dao,"9,6,41"
+6,Nhóm Nam Đảo,"16,34,11,10,19"
+7,Nhóm Hán,"8,49,17"
+8,Nhóm Tạng - Miến,"48,33,39,44,38,50"
