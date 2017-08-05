@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721032925) do
+ActiveRecord::Schema.define(version: 20170805095253) do
 
   create_table "backgrounds", force: :cascade do |t|
     t.integer  "m_folk_id"
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 20170721032925) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "audio_url"
     t.index ["category_id"], name: "index_words_on_category_id"
   end
 

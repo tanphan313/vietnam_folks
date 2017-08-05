@@ -5,6 +5,17 @@
     <%= f.text_field :content, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.fields_for :image, question.image do |image_builder| %>
+      <div class="form-group">
+        <%= image_builder.label :image, "Ảnh minh hoạ", class: "control-label" %>
+        <%= image_builder.file_field :picture, class: "form-control" %>
+      </div>
+      <div class="form-group image-review">
+        <%= image_tag question.picture_url if question.picture_url %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-group">
     <h3>Các đáp án</h3>
     <%= f.fields_for :question_answers, question.question_answers do |question_answer_builder| %>
       <div class="form-group">

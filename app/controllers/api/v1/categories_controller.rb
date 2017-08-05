@@ -10,6 +10,14 @@ class Api::V1::CategoriesController < Api::V1::ApiController
     end
   end
 
+  def lesson
+    if category = Category.find_by(id: params[:category_id])
+      api_response(build_lesson(category), 200)
+    else
+      api_response({ errors: { message: 'not found record' } }, 404)
+    end
+  end
+
   def show
     if category = Category.find_by(id: params[:id])
       api_response(build_category_detail(category), 200)
@@ -32,6 +40,7 @@ class Api::V1::CategoriesController < Api::V1::ApiController
 
   def build_category_detail category
     {
+      background_url: category.background_picture_url,
       words: category.words.map do |word|
         {
           id: word.id,
@@ -47,11 +56,17 @@ class Api::V1::CategoriesController < Api::V1::ApiController
           meaning: sentence.meaning,
           description: sentence.description
         }
-      end,
+      end
+    }
+  end
+
+  def build_lesson category
+    {
       questions: category.questions.random_questions.map do |question|
         {
           id: question.id,
           content: question.content,
+          picture_url: question.picture_url,
           question_answers: question.question_answers.map do |question_answer|
             {
               id: question_answer.id,

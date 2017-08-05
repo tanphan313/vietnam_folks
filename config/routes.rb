@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :m_folks, only: [:index, :show]
       resources :categories, only: [:index, :show] do
-        resources :lessons, only: :show
+        # resources :lessons, only: :show
+        get "lesson", to: "categories#lesson"
       end
     end
   end

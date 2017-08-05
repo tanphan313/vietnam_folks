@@ -8,6 +8,7 @@ class Admin::QuestionsController < ApplicationController
 
   def new
     @question = category.questions.build
+    @question.build_image unless @question.image
     4.times do
       @question.question_answers.build correct: false
     end
@@ -24,6 +25,7 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def edit
+    @question.build_image unless @question.image
   end
 
   def update
@@ -47,7 +49,7 @@ class Admin::QuestionsController < ApplicationController
   private
   def question_params
     params.require(:question).permit :id, :content, :category_id,
-      question_answers_attributes: [:id, :content, :correct]
+      question_answers_attributes: [:id, :content, :correct], image_attributes: Image::PARAMS_ATTRIBUTES
   end
 
   def category
