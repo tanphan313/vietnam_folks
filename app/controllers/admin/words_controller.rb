@@ -46,7 +46,7 @@ class Admin::WordsController < ApplicationController
 
   private
   def word_params
-    params.require(:word).permit :id, :content, :meaning, background_attributes: WordBackground::PARAMS_ATTRIBUTES
+    params.require(:word).permit :id, :content, :meaning, :audio_url, background_attributes: WordBackground::PARAMS_ATTRIBUTES
   end
 
   def category
