@@ -13,10 +13,7 @@ namespace :master_data do
         else
           folk_category = FolkCategory.create! params
         end
-      end
-
-      FolkCategory.all.each_with_index do |folk_category, index|
-        folk_category.folk_ids = [*((index+1)*9-8)..((index+1)*9)]
+        folk_category.folk_ids = row[2].split(",")
       end
     end
     p "Finish import folk_category"
