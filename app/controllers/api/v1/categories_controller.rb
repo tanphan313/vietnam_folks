@@ -46,7 +46,8 @@ class Api::V1::CategoriesController < Api::V1::ApiController
           id: word.id,
           content: word.content,
           meaning: word.meaning,
-          picture_url: word.background_picture_url
+          picture_url: word.background_picture_url,
+          audio_url: word.audio_url
         }
       end,
       sentences: category.sentences.map do |sentence|
