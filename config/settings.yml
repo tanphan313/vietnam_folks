@@ -1,5 +1,9 @@
-language_size: 2
+language_size: 6
 language_views:
   - en
   - vi
+  - ko
+  - ru
+  - zh
+  - fr
 number_per_page: 20

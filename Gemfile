@@ -31,6 +31,8 @@ gem "cancancan", "~> 1.10"
 gem "nested_form"
 gem "ransack", github: 'activerecord-hackery/ransack'
 
+gem "searchkick"
+
 group :development, :test do
   gem "byebug", platform: :mri
   gem "pry"
